@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Details</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+    <div class="report-details-container">
+        <h1>Report Details</h1>
+        <div class="result-patient-info">
+            <h3>Patient Info:</h3>
+            <p><strong>Name:</strong>
+                <%= report.patient.name %>
+            </p>
+            <p><strong>Age:</strong>
+                <%= report.patient.age %>
+            </p>
+            <p><strong>Gender:</strong>
+                <%= report.patient.gender %>
+            </p>
+        </div>
+        <div class="result-test-types">
+            <h3>Test Types:</h3>
+            <ul>
+                <% report.testTypes.forEach(type=> { %>
+                    <li>
+                        <%= type %>
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
+        <div class="result-test-readings">
+            <h3>Test Readings:</h3>
+            <ul>
+                <% Object.entries(report.readings).forEach(([key, value])=> { %>
+                    <li><strong>
+                            <%= key %>:
+                        </strong>
+                        <%= value %>
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
+        <div id="resultBox">
+            <h3>AI Analysis:</h3>
+            <div style="overflow-x:auto;">
+                <style>
+                    #resultBox table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 12px;
+                        background: #f8fbff;
+                        font-size: 1em;
+                    }
+
+                    #resultBox th,
+                    #resultBox td {
+                        border: 1px solid #b6d0e2;
+                        padding: 8px 12px;
+                        text-align: left;
+                    }
+
+                    #resultBox th {
+                        background: #3498db;
+                        color: #fff;
+                        font-weight: 600;
+                    }
+
+                    #resultBox tr:nth-child(even) {
+                        background: #eaf3fa;
+                    }
+
+                    #resultBox tr:hover {
+                        background: #d6eaf8;
+                    }
+
+                    #resultBox .ai-summary {
+                        background: #f4f8fb;
+                        border-left: 4px solid #3498db;
+                        padding: 10px 16px;
+                        border-radius: 6px;
+                        margin-top: 10px;
+                        font-style: italic;
+                        color: #2c3e50;
+                    }
+                </style>
+                <%- report.aiAnalysis %>
+            </div>
+            <div style="margin-top:10px;color:#888;font-size:0.98em;">
+                <strong>Date & Time:</strong>
+                <%= report.createdAt ? report.createdAt.toLocaleString() : '' %>
+            </div>
+        </div>
+        <a href="/previous-reports" class="back-btn" style="margin-top:24px;">&larr; Back to Previous Reports</a>
+    </div>
+</body>
+
+</html>

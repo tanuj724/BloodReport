@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Previous Reports</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="previous-reports-container">
+        <h1>Previous Reports</h1>
+        <% if (reports && reports.length> 0) { %>
+            <ul class="previous-reports-list">
+                <% reports.forEach(function(report) { %>
+                    <li class="previous-report-block">
+                        <div class="previous-report-main">
+                            <div>
+                                <strong>
+                                    <%= report.patient.name %>
+                                </strong>
+                            </div>
+                            <div class="previous-report-type">
+                                <span>Type: <%= report.testTypes.join(', ') %></span>
+                        </div>
+                        <div class="previous-report-date">
+                            <small>Date: <%= report.createdAt ? report.createdAt.toLocaleString() : '' %></small>
+                        </div>
+                        <!-- Minimal details only; AI review and other info hidden -->
+                    </div>
+                    <a class="report-details-btn" href="/report/<%= report._id %>">More Details</a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No previous reports found.</p>
+    <% } %>
+    <a href="/dashboard" class="back-btn" style="margin-top:24px;">&larr; Back to Dashboard</a>
+</div>
+</body>
+</html>

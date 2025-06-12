@@ -1,0 +1,342 @@
+/* General page setup */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f9fb;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Page header */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* Form styling */
+form {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: none;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+legend {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Labels and inputs */
+label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 12px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 2px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Result section */
+#result {
+    margin: 30px auto;
+    max-width: 700px;
+    background-color: #eef6fb;
+    padding: 20px;
+    border-left: 5px solid #3498db;
+    font-family: monospace;
+    white-space: pre-wrap;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Back links */
+a {
+    display: inline-block;
+    margin-top: 25px;
+    color: #3498db;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Smooth fade animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    padding: 12px 30px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+
+.navbar-brand a {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-menu li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.navbar-menu li a:hover,
+.navbar-menu li a.active {
+    color: #f39c12;
+}
+
+.dashboard-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.08);
+    padding: 30px 40px;
+}
+
+.dashboard-nav {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    list-style: none;
+    margin: 30px 0 20px 0;
+    padding: 0;
+}
+
+.dashboard-nav li a {
+    color: #3498db;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 18px;
+    border-radius: 5px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dashboard-nav li a:hover,
+.dashboard-nav li a.active {
+    background: #3498db;
+    color: #fff;
+}
+
+.dashboard-content {
+    margin-top: 30px;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.08);
+    padding: 30px 40px;
+}
+
+/* Previous Reports Page Styles */
+.previous-reports-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(44, 62, 80, 0.13);
+    padding: 38px 44px 28px 44px;
+}
+
+.previous-reports-container h1 {
+    color: #2c3e50;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.previous-reports-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.previous-report-block {
+    background: #f4f8fb;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    margin-bottom: 22px;
+    padding: 12px 18px 12px 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.2s;
+    min-height: 60px;
+    font-size: 0.97em;
+}
+
+.previous-report-block:hover {
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.13);
+}
+
+.previous-report-main {
+    flex: 1;
+}
+
+.previous-report-main>div {
+    margin-bottom: 2px;
+}
+
+.previous-report-type {
+    margin-top: 4px;
+    color: #2980b9;
+    font-weight: 500;
+    font-size: 0.95em;
+}
+
+.previous-report-date {
+    margin-top: 2px;
+    color: #888;
+    font-size: 0.95em;
+}
+
+.report-details-btn,
+.back-btn {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    margin-left: 24px;
+    box-shadow: 0 1px 4px rgba(44, 62, 80, 0.07);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.report-details-btn:hover,
+.back-btn:hover {
+    background: #217dbb;
+}
+
+.previous-reports-ai {
+    margin-top: 8px;
+    background: #eafaf1;
+    border-left: 4px solid #27ae60;
+    padding: 8px 14px;
+    border-radius: 5px;
+    color: #218c5a;
+    font-size: 1.01em;
+    font-style: italic;
+    display: none;
+    /* Hide AI review in minimal list view */
+}
+
+/* Report Details Page Styling */
+.report-details-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(44, 62, 80, 0.13);
+    padding: 38px 44px 28px 44px;
+}
+
+@media (max-width: 700px) {
+
+    .previous-reports-container,
+    .report-details-container {
+        padding: 14px 8px;
+    }
+
+    .previous-report-block {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 10px;
+    }
+
+    .report-details-btn,
+    .back-btn {
+        margin-left: 0;
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    .previous-reports-container,
+    #resultBox,
+    .result-patient-info,
+    .result-test-types,
+    .result-test-readings {
+        padding: 12px 8px;
+    }
+}

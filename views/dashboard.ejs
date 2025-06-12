@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dash.css" />
+    <style>
+        /* Enhanced navbar styles */
+        .dashboard-navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(90deg, #3498db 0%, #6dd5fa 100%);
+            padding: 16px 0 12px 0;
+            border-radius: 0 0 14px 14px;
+            box-shadow: 0 2px 10px rgba(44, 62, 80, 0.10);
+            margin-bottom: 30px;
+        }
+
+        .dashboard-navbar ul {
+            display: flex;
+            gap: 38px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-navbar li a {
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.13rem;
+            padding: 9px 20px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+
+        .dashboard-navbar li a:hover,
+        .dashboard-navbar li a.active {
+            background: #cac0b0;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(243, 156, 18, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="dashboard-navbar">
+        <ul>
+            <li><a href="/test-selection">New Test</a></li>
+            <li><a href="/previous-reports">Previous Reports</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+    <div class="dashboard-container">
+        <h1>Dashboard</h1>
+        <div class="dashboard-content">
+            <% if (patient && patient.name) { %>
+                <h2>Welcome, <%= patient.name %>!</h2>
+                <% } %>
+                    <h3>Recent Report</h3>
+                    <% var filteredReports=[]; if (Array.isArray(reports) && patient && patient.name && patient.age &&
+                        patient.gender) { filteredReports=reports.filter(function(r) { return r.patient &&
+                        r.patient.name===patient.name && String(r.patient.age)===String(patient.age) &&
+                        r.patient.gender===patient.gender; }); } filteredReports.sort(function(a, b) { return new
+                        Date(b.createdAt) - new Date(a.createdAt); }); var recentReport=filteredReports.length> 0 ?
+                        filteredReports[0] : null;
+                        %>
+                        <% if (recentReport) { %>
+                            <ul>
+                                <li>
+                                    <strong>
+                                        <%= recentReport.patient.name %>
+                                    </strong> - <%= recentReport.testTypes.join(', ') %><br>
+                        <small>Date: <%= recentReport.createdAt ? recentReport.createdAt.toLocaleString() : '' %></small>
+                        <div>AI Analysis: <%- recentReport.aiAnalysis %></div>
+                    </li>
+                </ul>
+            <% } else { %>
+                <p>No reports found.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

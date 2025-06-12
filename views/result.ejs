@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Analysis Result</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>AI Blood Report Summary</h1>
+
+  <div class="result-patient-info"
+    style="background:#f8fbff;border-radius:10px;padding:18px 22px;margin-bottom:18px;box-shadow:0 2px 8px #e3eaf3;">
+    <h3 style="color:#217dbb;">Patient Info:</h3>
+    <p><strong>Name:</strong>
+      <%= patient.name %>
+    </p>
+    <p><strong>Age:</strong>
+      <%= patient.age %>
+    </p>
+    <p><strong>Gender:</strong>
+      <%= patient.gender %>
+    </p>
+  </div>
+
+  <div class="result-test-types"
+    style="background:#f4f8fb;border-radius:10px;padding:14px 20px;margin-bottom:16px;box-shadow:0 1px 4px #e3eaf3;">
+    <h3 style="color:#217dbb;">Test Types:</h3>
+    <ul>
+      <% testTypes.forEach(type=> { %>
+        <li>
+          <%= type %>
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+
+  <div class="result-test-readings"
+    style="background:#f8fbff;border-radius:10px;padding:14px 20px;margin-bottom:16px;box-shadow:0 1px 4px #e3eaf3;">
+    <h3 style="color:#217dbb;">Test Readings:</h3>
+    <ul>
+      <% Object.entries(readings).forEach(([key, value])=> { %>
+        <li><strong>
+            <%= key %>:
+          </strong>
+          <%= value %>
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+
+  <div id="resultBox"
+    style="background:#fffbe9;border-radius:12px;padding:22px 18px;margin-bottom:18px;box-shadow:0 2px 12px #f7e7c1;">
+    <h3 style="color:#b37a00;">AI Analysis:</h3>
+    <style>
+      #resultBox table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 12px;
+        background: #f8fbff;
+        font-size: 1em;
+      }
+
+      #resultBox th,
+      #resultBox td {
+        border: 1px solid #b6d0e2;
+        padding: 8px 12px;
+        text-align: left;
+      }
+
+      #resultBox th {
+        background: #3498db;
+        color: #fff;
+        font-weight: 600;
+      }
+
+      #resultBox tr:nth-child(even) {
+        background: #eaf3fa;
+      }
+
+      #resultBox tr:hover {
+        background: #d6eaf8;
+      }
+
+      #resultBox .ai-summary {
+        background: #f4f8fb;
+        border-left: 4px solid #3498db;
+        padding: 10px 16px;
+        border-radius: 6px;
+        margin-top: 10px;
+        font-style: italic;
+        color: #2c3e50;
+      }
+    </style>
+    <div style="overflow-x:auto;">
+      <%- aiResponse %>
+    </div>
+  </div>
+
+  <script>
+    // Scroll to result box on load
+    window.onload = () => {
+      document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
+    };
+  </script>
+  <div style="margin-top: 30px;">
+    <a href="/dashboard" style="text-decoration: none; color: #3498db; font-weight: bold;">← Back to Dashboard</a>
+  </div>
+
+
+</body>
+
+</html>

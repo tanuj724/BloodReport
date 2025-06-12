@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enter Test Readings</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <h1>Enter Your Test Readings</h1>
+
+  <form action="/result" method="POST">
+    <% const allFields = {
+      "Complete Blood Count (CBC)": ["Hemoglobin", "White Blood Cells (WBC)", "Red Blood Cells (RBC)", "Platelet Count"],
+      "Blood Sugar Levels": ["Fasting Blood Sugar", "Postprandial Blood Sugar", "HbA1c (Glycated Hemoglobin)"],
+      "Liver Function Test (LFT)": ["SGPT (ALT)", "SGOT (AST)", "Total Bilirubin", "Alkaline Phosphatase (ALP)"],
+      "Kidney Function Test (KFT)": ["Urea", "Creatinine", "Sodium", "Potassium"],
+      "Lipid Profile Test": ["Total Cholesterol", "LDL Cholesterol", "HDL Cholesterol", "Triglycerides"],
+      "Thyroid Function Test (TFT)": ["Thyroid Stimulating Hormone (TSH)", "Triiodothyronine (T3)", "Thyroxine (T4)"],
+      "Infection Screening Tests": ["Dengue NS1 Antigen", "Widal Test", "HIV Test", "COVID-19 Test", "Malaria Antigen"],
+      "Vitamin and Hormone Panel": ["Vitamin D", "Vitamin B12", "Testosterone", "Estrogen"]
+    }; %>
+
+    <% const added = new Set(); %>
+
+    <% selectedTests.forEach(type => { %>
+      <% if (allFields[type]) { %>
+        <fieldset>
+          <legend><%= type %></legend>
+          <% allFields[type].forEach(field => {
+               if (!added.has(field)) { added.add(field); %>
+            <label for="<%= field %>"><%= field %>:</label>
+            <input type="number" name="<%= field %>" id="<%= field %>" step="any" required /><br />
+          <% }}); %>
+        </fieldset>
+      <% } %>
+    <% }); %>
+
+    <button type="submit">Submit for Analysis</button>
+  </form>
+  <a href="/test-selection" style="display:inline-block; margin-top:20px;">← Back to Test Selection</a>
+
+</body>
+</html>
