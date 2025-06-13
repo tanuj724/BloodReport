@@ -1,11 +1,73 @@
 <%- include('partials/header') %>
+    <link rel="stylesheet" href="/css/style.css">
     <div class="container">
-        <h1>Help</h1>
-        <p>Welcome to the Blood Report System. Use the navigation bar to start a new test, view previous reports, or get
-            help.</p>
-        <ul>
-            <li><b>New Test:</b> Start a new blood test entry for a patient.</li>
-            <li><b>Previous Reports:</b> View all previously generated reports.</li>
-            <li><b>Help:</b> You are here! For further assistance, contact support@example.com.</li>
-        </ul>
+        <div class="help-box heading">
+            <span class="icon">🩸</span>
+            <h1 style="margin:0;">Help</h1>
+        </div>
+        <div class="help-box info">
+            <span class="icon">💡</span>
+            <div>
+                <p>Welcome to the Blood Report System. Use the navigation bar to start a new test, view previous
+                    reports, or get help.</p>
+            </div>
+        </div>
+        <div class="help-box step">
+            <span class="icon">📝</span>
+            <div>
+                <h2>Step-by-step Instructions</h2>
+                <ul>
+                    <li><b>New Test:</b> Click "New Test" in the navigation bar. Enter patient details, select the
+                        required tests, input readings, and generate the report.</li>
+                    <li><b>Previous Reports:</b> Click "Previous Reports" to view a list of all reports. Use the search
+                        bar to find reports by patient name or date. Click a report to view details.</li>
+                    <li><b>Help:</b> You are here! For further assistance, see below.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="help-box faq">
+            <span class="icon">❓</span>
+            <div>
+                <h2>Frequently Asked Questions (FAQs)</h2>
+                <ul>
+                    <li><b>How do I edit a report?</b> Currently, reports cannot be edited after submission for data
+                        integrity.</li>
+                    <li><b>Can I download a report?</b> Yes, open a report and use the browser's print or save as PDF
+                        feature.</li>
+                    <li><b>Is my data secure?</b> All data is stored securely and only accessible to authorized users.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="help-box contact">
+            <span class="icon">📞</span>
+            <div>
+                <h2>Contact Information</h2>
+                <ul>
+                    <li>Email: support@example.com</li>
+                    <li>Phone: +1-800-555-1234</li>
+                    <li>Live Chat: <a href="#">Start chat</a> (coming soon)</li>
+                    <li>Contact Form: <a href="#">Submit a request</a> (coming soon)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="help-box troubleshoot">
+            <span class="icon">🛠️</span>
+            <div>
+                <h2>Troubleshooting Tips</h2>
+                <ul>
+                    <li><b>Login issues:</b> Ensure your username and password are correct. If you forgot your password,
+                        use the reset link or contact support.</li>
+                    <li><b>Report not loading:</b> Refresh the page or check your internet connection. If the problem
+                        persists, contact support.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="help-box info">
+            <span class="icon">📄</span>
+            <div>
+                <h2>Documentation</h2>
+                <p>Read the <a href="#">User Manual</a> for detailed documentation.</p>
+            </div>
+        </div>
     </div>

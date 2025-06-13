@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 const Report = require('../models/report'); // MongoDB model
 
-// 1️⃣ GET: Start at patient info form
+// GET: Start at patient info form
 router.get('/', (req, res) => {
   res.render('patientInfo');
 });
@@ -47,23 +47,26 @@ router.get('/help', (req, res) => {
   res.render('help');
 });
 
-// 2️⃣ POST: After patient info → save to session → go to dashboard
+//POST: After patient info → save to session → go to dashboard
 router.post('/dashboard', async (req, res) => {
   req.session.patient = req.body;
-  // Fetch all reports for dashboard
   const reports = await require('../models/report').find({});
   res.render('dashboard', { patient: req.body, reports });
 });
 
-// 3️⃣ POST: After selecting test types → save in session → go to test readings
 router.post('/test-readings', (req, res) => {
   let selected = req.body.testType;
 
-  // Force single string to become array
-  const selectedTests = Array.isArray(selected) ? selected : [selected];
+  // Fix: handle both single and multiple selections, and no selection
+  let selectedTests = [];
+  if (Array.isArray(selected)) {
+    selectedTests = selected;
+  } else if (typeof selected === "string") {
+    selectedTests = [selected];
+  }
 
   // Check if no test is selected
-  if (!selected || (Array.isArray(selectedTests) && selectedTests.length === 0) || (Array.isArray(selectedTests) && selectedTests[0] === undefined)) {
+  if (!selected || selectedTests.length === 0 || selectedTests[0] === undefined) {
     const patient = req.session.patient || {};
     return res.render('testSelection', {
       patient,
@@ -76,7 +79,6 @@ router.post('/test-readings', (req, res) => {
   res.render('testReadings', { selectedTests });
 });
 
-// 4️⃣ POST: After readings → show result page
 router.post('/result', async (req, res) => {
   const readings = req.body;
   const patient = req.session.patient || {};
@@ -90,7 +92,7 @@ router.post('/result', async (req, res) => {
     reportText += `${key}: ${readings[key]}\n`;
   }
 
-  // 🧠 Call OpenAI for AI summary
+
   let aiResponse = "No summary generated.";
   if (!process.env.OPENAI_API_KEY) {
     console.error('OpenAI API key is missing. Please check your .env file.');
@@ -104,14 +106,12 @@ router.post('/result', async (req, res) => {
           messages: [
             { role: "system", content: "You are a helpful medical assistant." },
             {
-              role: "user", content: `Analyze this blood report or symptoms and provide a concise summary 
-              as an HTML table with the following columns: Parameter, Value, Normal Range, Interpretation, 
-              Possible Causes, Symptoms, Suggestions. Fill as much as possible based on the data. After the 
-              table, you may add a short summary in a <div class="ai-summary">...</div> if needed.
+              role: "user", content: `Analyze this blood report or symptoms and provide a concise summary as an HTML table with the following columns: Parameter, Value, Normal Range, Interpretation, Possible Causes, Symptoms, Suggestions(for diet and any other that can help). Fill tokens based on the data. After the table, add a short summary describing the possible disease and conditions in a <div class="ai-summary">...</div>.
+IMPORTANT: Return ONLY the HTML table and summary. DO NOT include any code block, markdown, or triple backticks. 
 Blood report or symptoms:\n${reportText}`
             }
           ],
-          max_tokens: 700,
+          max_tokens: 1500,
           temperature: 0.5
         },
         {
@@ -119,17 +119,15 @@ Blood report or symptoms:\n${reportText}`
             Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
             'Content-Type': 'application/json'
           }
-          // Remove the httpsAgent line below to use system default SSL settings
-          // httpsAgent: new https.Agent({ rejectUnauthorized: false }) // REMOVE THIS LINE
         }
       );
       aiResponse = openaiRes.data.choices[0].message.content.trim();
-    } 
+    }
     catch (err) {
       // Improved error logging for debugging
       if (err.response && err.response.data) {
         console.error('OpenAI Error:', err.message, JSON.stringify(err.response.data));
-        aiResponse = "AI summary could not be generated due to an error: " ;
+        aiResponse = "AI summary could not be generated due to an error: ";
       } else {
         console.error('OpenAI Error:', err.message);
         aiResponse = "AI summary could not be generated due to an error: ";
@@ -137,7 +135,7 @@ Blood report or symptoms:\n${reportText}`
     }
   }
 
-  // 💾 Save report to MongoDB
+  // Save report to MongoDB
   const newReport = new Report({
     patient,
     testTypes,
@@ -147,7 +145,7 @@ Blood report or symptoms:\n${reportText}`
 
   await newReport.save();
 
-  // 🎯 Show result page
+  // Show result page
   res.render('result', {
     patient,
     testTypes,
@@ -164,5 +162,8 @@ router.get('/report/:id', async (req, res) => {
   }
   res.render('reportDetails', { report });
 });
+
+module.exports = router;
+
 
 module.exports = router;

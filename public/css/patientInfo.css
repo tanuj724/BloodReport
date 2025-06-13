@@ -1,0 +1,15 @@
+.patient-info-container {
+    max-width: 420px;
+    margin: 48px auto 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(44, 62, 80, 0.13);
+    padding: 38px 36px 28px 36px;
+    animation: fadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 600px) {
+    .patient-info-container {
+        padding: 18px 6px 18px 6px;
+    }
+}

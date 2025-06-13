@@ -1,0 +1,15 @@
+/* Report Details Page Styling */
+.report-details-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(44, 62, 80, 0.13);
+    padding: 38px 44px 28px 44px;
+}
+
+@media (max-width: 700px) {
+    .report-details-container {
+        padding: 14px 8px;
+    }
+}

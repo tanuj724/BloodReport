@@ -1,0 +1,46 @@
+.test-readings-container {
+    max-width: 500px;
+    margin: 48px auto 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(44, 62, 80, 0.13);
+    padding: 38px 36px 28px 36px;
+    animation: fadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+fieldset {
+    background: #f8fbff;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    padding: 14px 18px 10px 18px;
+    border: 1px solid #e3eaf3;
+}
+
+legend {
+    color: #217dbb;
+    font-size: 1.08em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+label {
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+input[type="number"] {
+    margin-bottom: 10px;
+}
+
+.test-readings-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+}
+
+@media (max-width: 600px) {
+    .test-readings-container {
+        padding: 18px 6px 18px 6px;
+    }
+}

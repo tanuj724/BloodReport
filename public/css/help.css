@@ -1,0 +1,127 @@
+/* Help page specific styles */
+body {
+    background: #e9f1fa;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #f9f9f9;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.13);
+    padding: 32px 40px 18px 40px;
+}
+
+h1,
+h2 {
+    color: #2c3e50;
+}
+
+h1 {
+    margin-bottom: 18px;
+}
+
+h2 {
+    margin-top: 32px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 4px;
+}
+
+ul {
+    margin-bottom: 18px;
+}
+
+li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    margin-bottom: 16px;
+}
+
+/* Info/Step/FAQ/Contact/Troubleshooting Boxes */
+.help-box {
+    background: #fff;
+    border: 2px solid #e3eaf3;
+    border-radius: 14px;
+    padding: 22px 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 16px #e3eaf3;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    transition: box-shadow 0.2s;
+}
+
+.help-box:hover {
+    box-shadow: 0 8px 32px #d0e2f7;
+}
+
+.help-box.heading {
+    background: #e3f1ff;
+    border-left: 8px solid #217dbb;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px #b3d8f7;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.help-box.info {
+    background: #eaf6ff;
+    border-left: 8px solid #2196f3;
+}
+
+.help-box.step {
+    background: #f0fff4;
+    border-left: 8px solid #34c759;
+}
+
+.help-box.faq {
+    background: #fffbe9;
+    border-left: 8px solid #ffb300;
+}
+
+.help-box.contact {
+    background: #f3e8ff;
+    border-left: 8px solid #a259ff;
+}
+
+.help-box.troubleshoot {
+    background: #fff0f0;
+    border-left: 8px solid #ff5252;
+}
+
+.help-box .icon {
+    font-size: 2.2em;
+    margin-right: 18px;
+    opacity: 1;
+    min-width: 2.2em;
+    text-align: center;
+}
+
+.help-box>div {
+    flex: 1;
+}
+
+/* Responsive for help page */
+@media (max-width: 700px) {
+    .container {
+        padding: 12px 4px;
+    }
+
+    .help-box {
+        padding: 12px 8px;
+    }
+}

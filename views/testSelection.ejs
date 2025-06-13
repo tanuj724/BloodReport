@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Select Tests</title>
   <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/testSelection.css" />
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const selectAll = document.getElementById('selectAll');
@@ -28,35 +29,38 @@
 </head>
 
 <body>
-  <h1>Select Blood Test Types</h1>
-
-  <% if (error) { %>
-    <div style="color: #b30000; background: #ffeaea; border: 1px solid #b30000; padding: 10px; margin-bottom: 15px;">
-      <%= error %>
-    </div>
-    <% } %>
-
-      <form action="/test-readings" method="POST">
-        <label><input type="checkbox" name="testType" value="Complete Blood Count (CBC)" /> Complete Blood Count
-          (CBC)</label><br />
-        <label><input type="checkbox" name="testType" value="Blood Sugar Levels" /> Blood Sugar Levels</label><br />
-        <label><input type="checkbox" name="testType" value="Liver Function Test (LFT)" /> Liver Function Test
-          (LFT)</label><br />
-        <label><input type="checkbox" name="testType" value="Kidney Function Test (KFT)" /> Kidney Function Test
-          (KFT)</label><br />
-        <label><input type="checkbox" name="testType" value="Lipid Profile Test" /> Lipid Profile Test</label><br />
-        <label><input type="checkbox" name="testType" value="Thyroid Function Test (TFT)" /> Thyroid Function Test
-          (TFT)</label><br />
-        <label><input type="checkbox" name="testType" value="Infection Screening Tests" /> Infection Screening
-          Tests</label><br />
-        <label><input type="checkbox" name="testType" value="Vitamin and Hormone Panel" /> Vitamin and Hormone
-          Panel</label><br />
-        <label><input type="checkbox" id="selectAll" /> <strong>Select All Tests</strong></label><br /><br />
-
-        <button type="submit">Next</button>
-      </form>
-      <a href="/dashboard" style="display:inline-block; margin-top:20px;">← Back to Dahsboard</a>
-
+  <div class="test-selection-container">
+    <h1 style="margin-bottom: 18px;">Select Blood Test Types</h1>
+    <% if (error) { %>
+      <div
+        style="color: #b30000; background: #ffeaea; border: 1px solid #b30000; padding: 10px; margin-bottom: 15px; border-radius: 6px;">
+        <%= error %>
+      </div>
+      <% } %>
+        <form action="/test-readings" method="POST">
+          <div class="test-checkbox-list">
+            <label><input type="checkbox" name="testType" value="Complete Blood Count (CBC)" /> Complete Blood Count
+              (CBC)</label>
+            <label><input type="checkbox" name="testType" value="Blood Sugar Levels" /> Blood Sugar Levels</label>
+            <label><input type="checkbox" name="testType" value="Liver Function Test (LFT)" /> Liver Function Test
+              (LFT)</label>
+            <label><input type="checkbox" name="testType" value="Kidney Function Test (KFT)" /> Kidney Function Test
+              (KFT)</label>
+            <label><input type="checkbox" name="testType" value="Lipid Profile Test" /> Lipid Profile Test</label>
+            <label><input type="checkbox" name="testType" value="Thyroid Function Test (TFT)" /> Thyroid Function Test
+              (TFT)</label>
+            <label><input type="checkbox" name="testType" value="Infection Screening Tests" /> Infection Screening
+              Tests</label>
+            <label><input type="checkbox" name="testType" value="Vitamin and Hormone Panel" /> Vitamin and Hormone
+              Panel</label>
+            <label class="select-all-label"><input type="checkbox" id="selectAll" /> Select All Tests</label>
+          </div>
+          <div class="test-selection-actions">
+            <button type="submit">Next</button>
+            <a href="/dashboard" style="margin-top:0;">← Back to Dashboard</a>
+          </div>
+        </form>
+  </div>
 </body>
 
 </html>

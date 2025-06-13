@@ -1,0 +1,36 @@
+.result-container {
+    max-width: 700px;
+    margin: 48px auto 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(44, 62, 80, 0.13);
+    padding: 38px 36px 28px 36px;
+    animation: fadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 700px) {
+    .result-container {
+        padding: 18px 6px 18px 6px;
+    }
+}
+
+/* Table styling for AI Analysis */
+.result-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background: #fffbe9;
+}
+
+.result-container th,
+.result-container td {
+    border: 1px solid #e0c97f;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+.result-container th {
+    background: #fff3c1;
+    font-weight: bold;
+}
